@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta cahrset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Personal portfolio</title>
+    <link rel="stylesheet" href="style.css">  
+    <script src="https://kit.fontawesome.com/83a54ae86d.js" crossorigin="anonymous"></script>  
+    </head>
+        <body>
+<div id="header">
+<div class="container">
+    <nav>
+    <img src="image/logo_name.png" class="logo">
+     <ul id ="sidemenu">
+        <li><a href="#header">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <i class="fa-solid fa-business-time" onclick="closemenu()"></i>
+    </ul>
+    <i class="fa-solid fa-bars" onclick="openmenu"></i>
+ </nav>
+    <div class="header-text">
+        <p>Graphic Designer</p>
+        <h1>Hello, I am <span>Antara</span><br> Welcome to my portfolio</h1>
+    </div>
+</div>
+</div>
+<!-- ------ about-------- -->
+<div id="about">
+    <div class="">
+        <div class="row">
+            <div class="about-col-1">
+            <img src="image/me.JPG">
+        </div>
+                <div class="about-col-2">
+                </div>
+                <h1 class="sub-title">About Me</h1>
+                <p>I am a versatile Graphic Designer with a passion for creating visually stunning and impactful designs.
+                With expertise in Illustrator, Photoshop, web designing, and product marketing, I bring a comprehensive 
+                skill set to every project.<br>In Illustrator, I create scalable logos, icons, and illustrations. My Photoshop skills enhance photos and digital artwork. As a web designer, I build user-friendly, visually appealing websites. 
+                My product marketing experience helps me craft compelling marketing materials and effective campaigns.</p>
+
+                <div class="tab-titles ">
+                </div>
+                <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                <p class="tab-linksactive-link" onclick="opentab('education')">Education</p>
+        </div>
+        <div class="tab-contents active-tab" id="skills">
+            <ul>
+                <li><span>Graphic/UX</span><br>Designing Web/App Interfaces</li>
+                <li><span>Web Development</span><br>Web app Development</li>
+                <li><span>App Development</span><br>Visually stunning and impactful designs</li>
+            </ul>
+        </div>
+        <div class="tab-contents active-tab" id="education">
+            <ul>
+                <li><span>2024-Current</span><br>Designing from Nippon Designer school（日本デザイナー学院）</li>
+                <li><span>2022-2023</span><br>東京外語専門学校</li>
+            </ul>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+<!-- -------services-------- -->
+ <div id="services">
+    <div class="container">
+        <h1 class="sub-title">My services</h1>
+        <div class="services-list">
+            <div>
+                <i class="fa-brands fa-app-store"></i>
+                <h2>Graphic and Web Design</h2>
+                <p>design unique logos, cohesive brand materials, brochures, flyers, posters, and custom illustrations.
+                    <br>I also create user-friendly websites, improve user experience, ensure sites work on all devices, and build online stores.</p>
+            <a href="#">Learn More</a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-crop"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>As a UI/UX designer, I specialize in creating visually appealing and user-friendly digital interfaces. 
+                        My services encompass a range of design activities, including user research, wireframing, prototyping, and usability testing. By blending aesthetics with functionality,<br>
+                    I ensure that each product not only looks great but also provides an intuitive and seamless user experience. 
+                        My goal is to enhance user satisfaction and engagement through thoughtful design solutions that meet both user needs and business objectives.</p>
+                        <a href="#">Learn More</a>
+                    </div>
+        </div>
+    </div>
+ </div>
+ <!----portfolio----- -->
+ <div id="portfolio">
+    <div class="container">
+    <h1 class="sub-title">My work</h1>
+    <div class="work-list">
+        <div class="work">
+            <img src="image/my_works.png">
+            <div class="layer"></div>
+                <h3>Social Media Design</h3>
+                <p>the design connects and has futuristic approach.Download now.</p>
+            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+            <div class="work-list">
+                <div class="work">
+                    <img src="">
+                    <h3>Social Media Design</h3>
+                <p>the design connects and has futuristic approach.Download now.</p>
+            <a href="#"><i class="fas fa-external-link-alt"></i></a>
+            </div>                   
+        </div>
+     </div>
+     <a href="#" class="btn">See More</a>
+    </div>
+ </div>
+ <!------contact--------- -->
+ <div id="contact">
+<div class="container">
+    <div class="row">
+        <div class="contact-left">
+            <h1 class="sub-title">Contact Me</h1>
+            <p><i class="fa-solid fa-paper-plane"></i>contact@example.com</p>
+            <p><i class="fa-solid fa-phone"></i>15372379</p>
+            <div class="socialicons">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/twara.an/"><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-linkedin"></i></a>
+            </div>
+            <a href="the cv u want to add" class="btn btn2">Download CV</a>
+        </div>
+        <div class="contact-right">
+            <form name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your email" required>
+                <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn btn2">Submit</button>
+            </form>
+            <span id="msg"></span>
+        </div>
+    </div>
+</div>
+<div class="copyright">
+    <p>Copyright reserved by Antara Barui <i class="fa-regular fa-heart"> </i></p>
+</div>
+</div>
+
+
+<script>
+    
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+    
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link");
+    document.getElementById(tabname).classList.add("active-tab")
+}
+
+</script>
+<script>
+    var sidemenu = document.getElementById("sidemenu");
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+    function openmenu(){
+    sidemenu.style.right = "200px";
+    }
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwkfvARHtZHso973JyWRL_Fx8ASWKvUgRRANk1WhZDbZKd0nM8XDRwhaCj6yGSVI0JK/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById('msg')
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent succesfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+  
+</body>
+</html>
