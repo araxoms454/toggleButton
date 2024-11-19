@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AllConvert </title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Sans Serif', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        header button {
+            background-color: #00f;
+            color: white;
+            font-size: 18px;
+            border: 2px solid #00f;
+            padding: 12px 30px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px 2px #00f;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px);
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .conversion-container {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+        }
+
+        .conversion-container input,
+        .conversion-container select {
+            margin: 12px;
+            padding: 12px;
+            font-size: 16px;
+            width: 240px;
+            border-radius: 15px;
+            border: 2px solid blue;
+            background-color: black;
+            color: white;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .conversion-container input:focus,
+        .conversion-container select:focus {
+            box-shadow: 0 0 10px 2px #00f;
+            outline: none;
+        }
+
+        button.convert-button {
+            background: linear-gradient(90deg, #ff69b4, #ffffff);
+            color: black;
+            border: none;
+            font-size: 18px;
+            padding: 12px 40px;
+            border-radius: 25px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button.convert-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px 5px #ff69b4;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: grey;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <button onclick="showConversionForm('length')">Length Conversions</button>
+    <button onclick="showConversionForm('weight')">Weight Conversions</button>
+    <button onclick="showConversionForm('speed')">Speed Conversions</button>
+    <button onclick="showConversionForm('temperature')">Temperature Conversions</button>
+</header>
+
+<section>
+    <div class="conversion-container" id="conversionForm">
+        <!-- Conversion form will appear here -->
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Antara Barui</p>
+</footer>
+
+<script>
+    function showConversionForm(conversionCategory) {
+        const conversionForm = document.getElementById('conversionForm');
+        conversionForm.innerHTML = '';
+
+        let inputLabel = '';
+        let outputLabel = '';
+        let inputUnit = '';
+        let outputUnit = '';
+        let conversionFunction = null;
+        let optionsHtml = '';
+
+        switch (conversionCategory) {
+            case 'length':
+                inputLabel = 'Value:';
+                outputLabel = 'Converted Value:';
+                optionsHtml = `
+                    <select id="inputUnit">
+                        <option value="mm">Millimeters (mm)</option>
+                        <option value="cm">Centimeters (cm)</option>
+                        <option value="m">Meters (m)</option>
+                        <option value="km">Kilometers (km)</option>
+                        <option value="q">Quarters (q)</option>
+                        <option value="h">Hands (h)</option>
+                    </select>
+                    <select id="outputUnit">
+                        <option value="mm">Millimeters (mm)</option>
+                        <option value="cm">Centimeters (cm)</option>
+                        <option value="m">Meters (m)</option>
+                        <option value="km">Kilometers (km)</option>
+                        <option value="q">Quarters (q)</option>
+                        <option value="h">Hands (h)</option>
+                    </select>
+                `;
+                conversionFunction = convertLength;
+                break;
+            case 'weight':
+                inputLabel = 'Value:';
+                outputLabel = 'Converted Value:';
+                optionsHtml = `
+                    <select id="inputUnit">
+                        <option value="kg">Kilograms (kg)</option>
+                        <option value="g">Grams (g)</option>
+                        <option value="lb">Pounds (lb)</option>
+                        <option value="oz">Ounces (oz)</option>
+                    </select>
+                    <select id="outputUnit">
+                        <option value="kg">Kilograms (kg)</option>
+                        <option value="g">Grams (g)</option>
+                        <option value="lb">Pounds (lb)</option>
+                        <option value="oz">Ounces (oz)</option>
+                    </select>
+                `;
+                conversionFunction = convertWeight;
+                break;
+            case 'speed':
+                inputLabel = 'Value:';
+                outputLabel = 'Converted Value:';
+                optionsHtml = `
+                    <select id="inputUnit">
+                        <option value="mps">Meters per second (m/s)</option>
+                        <option value="kmph">Kilometers per hour (km/h)</option>
+                        <option value="mph">Miles per hour (mph)</option>
+                    </select>
+                    <select id="outputUnit">
+                        <option value="mps">Meters per second (m/s)</option>
+                        <option value="kmph">Kilometers per hour (km/h)</option>
+                        <option value="mph">Miles per hour (mph)</option>
+                    </select>
+                `;
+                conversionFunction = convertSpeed;
+                break;
+            case 'temperature':
+                inputLabel = 'Value:';
+                outputLabel = 'Converted Value:';
+                optionsHtml = `
+                    <select id="inputUnit">
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="kelvin">Kelvin (K)</option>
+                    </select>
+                    <select id="outputUnit">
+                        <option value="celsius">Celsius (°C)</option>
+                        <option value="fahrenheit">Fahrenheit (°F)</option>
+                        <option value="kelvin">Kelvin (K)</option>
+                    </select>
+                `;
+                conversionFunction = convertTemperature;
+                break;
+        }
+
+        const html = `
+            <label>${inputLabel}</label>
+            <input type="number" id="inputValue" placeholder="Enter value" />
+            ${optionsHtml}
+            <button class="convert-button" onclick="performConversion('${conversionCategory}')">Convert</button>
+            <label>${outputLabel}</label>
+            <input type="text" id="outputValue" readonly />
+        `;
+        conversionForm.innerHTML = html;
+    }
+
+    function performConversion(conversionCategory) {
+        const inputValue = parseFloat(document.getElementById('inputValue').value);
+        const inputUnit = document.getElementById('inputUnit').value;
+        const outputUnit = document.getElementById('outputUnit').value;
+        let outputValue;
+
+        switch (conversionCategory) {
+            case 'length':
+                outputValue = convertLength(inputValue, inputUnit, outputUnit);
+                break;
+            case 'weight':
+                outputValue = convertWeight(inputValue, inputUnit, outputUnit);
+                break;
+            case 'speed':
+                outputValue = convertSpeed(inputValue, inputUnit, outputUnit);
+                break;
+            case 'temperature':
+                outputValue = convertTemperature(inputValue, inputUnit, outputUnit);
+                break;
+        }
+
+        document.getElementById('outputValue').value = outputValue;
+    }
+
+    // Length Conversion Functions
+    function convertLength(value, inputUnit, outputUnit) {
+        const units = {
+            mm: 1, cm: 10, m: 1000, km: 1000000, q: 400000, h: 4000
+        };
+        return (value * units[inputUnit]) / units[outputUnit];
+    }
+
+    // Weight Conversion Functions
+    function convertWeight(value, inputUnit, outputUnit) {
+        const units = {
+            kg: 1, g: 1000, lb: 2.20462, oz: 35.274
+        };
+        return (value * units[inputUnit]) / units[outputUnit];
+    }
+
+    // Speed Conversion Functions
+    function convertSpeed(value, inputUnit, outputUnit) {
+        const units = {
+            mps: 1, kmph: 3.6, mph: 2.23694
+        };
+        return (value * units[inputUnit]) / units[outputUnit];
+    }
+
+    // Temperature Conversion Functions
+    function convertTemperature(value, inputUnit, outputUnit) {
+        if (inputUnit === outputUnit) return value;
+
+        let celsius;
+
+        if (inputUnit === 'fahrenheit') {
+            celsius = (value - 32) * 5/9;
+        } else if (inputUnit === 'kelvin') {
+            celsius = value - 273.15;
+        } else {
+            celsius = value;
+        }
+
+        if (outputUnit === 'fahrenheit') {
+            return (celsius * 9/5) + 32;
+        } else if (outputUnit === 'kelvin') {
+            return celsius + 273.15;
+        } else {
+            return celsius;
+        }
+    }
+</script>
+
+</body>
+</html>
